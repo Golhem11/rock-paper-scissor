@@ -1,32 +1,43 @@
-const buttons = document.querySelectorAll('input')
+let playerScore = 0
+let computerScore = 0
+const buttons = document.querySelectorAll("input")
 function computerPlay() {
     let choices = ["rock", "paper", "scissors"]
     return choices[Math.floor(Math.random() * choices.length)]
 }
 function playRound(playerSelection) {
+    if(playerScore!=5 && computerScore!=5){
     let computerSelection = computerPlay()
     let result = ""
-    let playerCount = 0
-    let computerCount = 0
-    if ((playerSelection == "rock" && computerSelection == "scissors") ||
+        if ((playerSelection == "rock" && computerSelection == "scissors") ||
         (playerSelection == "scissors" && computerSelection == "paper") ||
         (playerSelection == "paper" && computerSelection == "rock")) {
-        
-        result = ("You win! " + playerSelection + " beats " + computerSelection)
+        playerScore += 1
+        result = ("You win! " + playerSelection + " beats " + computerSelection
+            + "<br><br>Player score: " + playerScore + "<br>Computer score: " + computerScore)
+        if (playerScore == 5) {
+            result += "<br><br>You won the game! Reload the page to play again"
+            
+        }
+
     }
     else if (playerSelection == computerSelection) {
-        result = ("It\'s a tie.")
+        result = ("It's a tie. You both chose " + playerSelection
+            + "<br><br>Player score: " + playerScore + "<br>Computer score: " + computerScore)
     }
     else {
-        result = ("You lose! " + computerSelection + " beats " + playerSelection)
+        computerScore += 1
+        result = ("You lose! " + computerSelection + " beats " + playerSelection
+            + "<br><br>Player score: " + playerScore + "<br>Computer score: " + computerScore)
+
+        if (computerScore == 5) {
+            result += "<br><br>I won the game! Reload the page to play again"
+        }
     }
 
-    document.getElementById('result').innerHTML = result
+    document.getElementById("result").innerHTML = result
     return
 }
+}
 
-buttons.forEach(button => {
-    button.addEventListener('click', function () {
-        playRound(button.value)
-    })
-})
+  

@@ -10,27 +10,30 @@
       #result{
           color: blueviolet;
           font-size: 20px;
-          font-family: monospace;
-          
+          font-family: monospace;    
       }
       input{
         width: 150px;
         border: 2px solid rgba(70, 4, 253, 0.87);
         border-radius: 10px;
         height: 100px;
-        text-align: center;
-        
-        
-}
+        text-align: center;       
+      }
+      #reload{
+        margin-top: 10%;
+      }
   </style>
 </head>
 <div= id="main">
 <body>
-    <input type="image" src="rock.png" value="rock"></input>
-    <input type="image" src="paper.png" value="paper"></input>
-    <input type="image" src="scissors.png" value="scissors"></input>
+    <input type="image" src="rock.png"  onclick=playRound("rock")></input>
+    <input type="image" src="paper.png"  onclick=playRound("paper")></input>
+    <input type="image" src="scissors.png" onclick=playRound("scissors")></input>
   <br>
+  
   <div id="result"></div>
+
+  <center><button id="reload" type="submit" onClick=location.reload()>Refresh Button</button></center>
   <script src="index.js"></script>
 </body>
 </div>
